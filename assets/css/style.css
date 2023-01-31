@@ -10,7 +10,6 @@ header {
   text-align: center;
 }
 
-
 #header-div {
   display:block;
   position: relative;
@@ -64,7 +63,7 @@ header {
 }
 
 
-#place-info {
+.place-info {
 
   display: block;
   border: 1px solid rgb(0, 0, 0);
@@ -81,7 +80,7 @@ header {
 }
 
 
-#place-todo {
+.place-todo {
 
   display: block;
   border: 1px solid rgb(0, 0, 0);
@@ -224,7 +223,11 @@ header {
 #world-weather h1 {
 
   display: block;
-  font-size: 35px;
+  font-size: 45px;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  margin-left: -110px;
+
 }
 
 .popular-city-div {
@@ -234,18 +237,20 @@ header {
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  width: 195px;
-  height: 180px;
-  padding: 10px;
+  width: 215px;
+  height: 200px;
   margin: 10px;
   transition: opacity 1s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 .popular-city-div:hover {
 
-  background-color: antiquewhite;
-  cursor: pointer;
+  background-color: #C37500;
+  opacity:0.7 !important;
+  filter:alpha(opacity=70) !important; /* For IE8 and earlier */
+  box-shadow: 0 0 0px #000000 !important;
 }
 
 
@@ -253,6 +258,18 @@ header {
 
   text-align: center;
   
+}
+
+.title {
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.title2{
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .popular-city-div .title {
@@ -385,4 +402,8 @@ footer {
   padding: 20px;
   text-align: center;
   font-size: 20px;
+}
+
+.none {
+  display: none;
 }
