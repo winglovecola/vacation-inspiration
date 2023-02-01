@@ -19,7 +19,7 @@ header {
   background-image: url("../images/headerbg.jpg");
   background-position: 25% 55%;
   background-repeat: repeat;
-  background-size: 50%;
+  background-size: 1000px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -64,21 +64,51 @@ header {
 
 
 #map {
-
+  display: none;
   border: 1px solid black;
   height: 500px;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 
-.place-info {
+#place-photo {
 
-  display: block;
+  display: none;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: stretch;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 18px;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.place-photo-div {
+
+  display: flex;
+  align-content: center;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: #000000;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+
+#place-info {
+
+  display: none;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;
   font-size: 18px;
   margin-bottom: 30px;
 }
+
 #place-info h2 {
 
   font-size: 30px;
@@ -87,9 +117,9 @@ header {
 }
 
 
-.place-todo {
+#place-todo {
 
-  display: block;
+  display: none;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;

@@ -26,20 +26,13 @@ let searchedLocationData = {};
 //localStorage.removeItem ("search-history");
 
 
-let googlePhotoDisplayLimit = 4; //control how many google image display in the page
+let googlePhotoDisplayLimit = 6; //control how many google image display in the page
 
 let input, options, autocomplete;
 let map, marker, infoWindow, userLocation;
 
 
 
-let placeInfo = document.getElementById("place-info")
-let placeTodo = document.getElementById("place-todo")
-let worldWeather = document.getElementById("world-weather")
-placeInfo.classList.remove("place-info");
-placeTodo.classList.remove("place-todo");
-placeInfo.classList.add("none");
-placeTodo.classList.add("none");
 
 
 //initializing google place api
@@ -71,6 +64,7 @@ function initGoogleAutocomplete() {
 
   //set map to user location if available
   // Try HTML5 geolocation.
+  /*
   if (navigator.geolocation) 
   {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -91,7 +85,7 @@ function initGoogleAutocomplete() {
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
-  }
+  }*/
 
 
 
@@ -160,12 +154,6 @@ function initGoogleAutocomplete() {
         //console.log ("searchedLocationData", searchedLocationData);
 
         //save search history
-        placeInfo.classList.add("place-info");
-        placeTodo.classList.add("place-todo");
-        placeInfo.classList.remove("none");
-        placeTodo.classList.remove("none");
-        worldWeather.classList.add("none")
-        
         saveSearch (searchedLocationData);
 
         //execute weather api using "open weather"
@@ -204,8 +192,8 @@ function googlePhotoApi (place, imageLimit, elementID) {
 
     for (let i = 0; i < imageLimit; i++)
     {
-      photoUrl = photos[i].getUrl({maxWidth: 300, maxHeight: 300});
-      placePhotoHtml += "<div class='place-photo'><img src='" + photoUrl + "'></div>";
+      photoUrl = photos[i].getUrl({maxWidth: 240, maxHeight: 240});
+      placePhotoHtml += "<div class='place-photo-div'><img src='" + photoUrl + "'></div>";
     }
     
     
@@ -241,11 +229,6 @@ function geocodeSearch(placeName, placeAddress) {
 
   $("#search-input").val(searchTerm);
 
-  placeInfo.classList.add("place-info");
-  placeTodo.classList.add("place-todo");
-  placeInfo.classList.remove("none");
-  placeTodo.classList.remove("none");
-  worldWeather.classList.add("none")
 
   let geocoder = new google.maps.Geocoder();
   geocoder.geocode({"address":searchTerm}, function(results, status) {
@@ -258,6 +241,7 @@ function geocodeSearch(placeName, placeAddress) {
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
           map.fitBounds(place.geometry.viewport);
+          map.setZoom(10);
         } else {
           map.setCenter(place.geometry.location);
           map.setZoom(17);
@@ -369,6 +353,7 @@ function renderSearchedLocation () {
           // If the place has a geometry, then present it on a map.
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
+            map.setZoom(10);
           } else {
             map.setCenter(place.geometry.location);
             map.setZoom(17);
@@ -479,7 +464,10 @@ function weatherShow (weatherDataRaw) {
   $("#weather-now-sec").show ();
   $("#weather-forcast-sec").show ();
 
-  
+  $("#map").show ();
+  $("#place-info").show ();
+  $("#place-todo").show ();
+  $("#place-photo").css ("display", "flex");
 
 
   weatherNowHtml = "";
