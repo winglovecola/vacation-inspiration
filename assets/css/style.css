@@ -137,7 +137,15 @@ header {
   margin-bottom: 10px;
 }
 
+#chatbox {
 
+  display: none;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
 
 #loading-icon {
   width: 80px;
