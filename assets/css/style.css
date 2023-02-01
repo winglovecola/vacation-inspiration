@@ -10,6 +10,9 @@ header {
   text-align: center;
 }
 
+#logo-div:hover{
+  color: blue;
+}
 
 #header-div {
   display:block;
@@ -70,6 +73,7 @@ header {
   height: 500px;
   border-radius: 10px;
   margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 
@@ -80,7 +84,6 @@ header {
   flex-direction: row;
   justify-content: center;
   align-content: stretch;
-  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;
   font-size: 18px;
@@ -88,15 +91,18 @@ header {
   gap: 10px;
 }
 
-.place-photo-div {
+.place-photo-div img{
 
   display: flex;
-  align-content: center;
-  border: 1px solid rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
   border-radius: 10px;
-  background-color: #000000;
-  padding: 5px;
-  margin-bottom: 30px;
+  width: 195px;
+  height: 180px;
+  margin: 10px;
+  transition: opacity 1s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -107,13 +113,17 @@ header {
   border-radius: 10px;
   padding: 20px;
   font-size: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  font-family: 'Cardo', serif;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 #place-info h2 {
 
   font-size: 30px;
   font-weight: bold;
+  font-family: 'Playfair Display SC', serif;
 
 }
 
@@ -126,18 +136,34 @@ header {
   padding: 20px;
   font-size: 20px;
   margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
+#place-todo h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Playfair Display SC', serif;
+}
 
 #place-todo ol {
   list-style:decimal;
 }
 
 #place-todo li {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-family: 'Cardo', serif;
+  text-decoration: none;
+  color: black;
 }
 
-
+a:link {
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: blue;
+}
 
 #loading-icon {
   width: 80px;
@@ -347,6 +373,9 @@ header {
   
 }
 
+#weather-now-div{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
 
 #weather-now-div .icon-div {
   margin: 10px;
@@ -405,6 +434,7 @@ header {
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 #weather-forcast-div .date-div {
@@ -446,7 +476,7 @@ header {
 
 #weather-forcast-sec .title-div {
 
-  display: block;
+  display: none;
   padding: 10px;
   font-size: 24px;
   margin-bottom: 20px;
