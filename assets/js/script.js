@@ -32,8 +32,11 @@ let input, options, autocomplete;
 let map, marker, infoWindow, userLocation;
 
 
-
-
+const worldWeather = document.getElementById("world-weather")
+const logo = document.getElementById("logo-div")
+logo.addEventListener("click", function(event) {
+  window.location.reload();
+})
 
 //initializing google place api
 function initGoogleAutocomplete() {
@@ -73,15 +76,12 @@ function initGoogleAutocomplete() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
       map.setCenter(userLocation);
       marker.setPosition(userLocation);
-
     },
     () => {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
@@ -149,6 +149,8 @@ function initGoogleAutocomplete() {
         searchedLocationData.placeId = place.place_id;
 
         googlePhotoApi (place, googlePhotoDisplayLimit, "#place-photo");
+        worldWeather.classList.add("none")
+
 
 
         //console.log ("searchedLocationData", searchedLocationData);
@@ -228,7 +230,7 @@ function geocodeSearch(placeName, placeAddress) {
 
 
   $("#search-input").val(searchTerm);
-
+  worldWeather.classList.add("none")
 
   let geocoder = new google.maps.Geocoder();
   geocoder.geocode({"address":searchTerm}, function(results, status) {
@@ -797,4 +799,3 @@ el.addEventListener("mousemove", (e) => {
 
 //load search location data
 loadSearchedLocationData ();
-
