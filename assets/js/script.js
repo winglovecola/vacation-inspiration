@@ -417,6 +417,7 @@ function strExtract (str, beginningStr, EndingStr) {
   return extractedStr;
 }
 
+let chatId = 0;
 
 // travel assistant portion
 function questionfunction(){
@@ -425,18 +426,41 @@ function questionfunction(){
 
   console.log (questionInput);
 
-  chatGptApi (questionInput , "#chatbox");
-  
-}
+  let chatIdText= "c" + chatId;
+  let chatIdQuestion= "q" + chatId;
 
+  $("#chatbox").append("<div id ='" + chatIdQuestion + "' class = 'aiQuestion'>"
+   + questionInput +  "</div>");
+
+  //append new div, add id chatHistory, 
+  $("#chatbox").append("<div id ='" + chatIdText + " ' class = 'aiAnswer' ></div>");
+
+  
+
+  chatGptApi (questionInput ,  "#" + chatIdText);
+
+  $("#chatbox").show();
+
+ // $("#aiQuestion").html("<h2>" + questionInput + " ?</h2>")
+
+  chatId++;
+
+}
+ 
 
 
 //when user press enter, function above 
 $("#search-question").on("keyup", function(e) {
   if(e.keyCode == 13) { //press enter
     questionfunction();
+    
+  
+    // clear input search value after enter key
+    $('#search-question').val('');
+
 
   }
+
 });
 
 //weather api function

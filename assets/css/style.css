@@ -157,12 +157,14 @@ header {
   color: black;
 }
 
+
 a:link {
   text-decoration: none;
   color: black;
 }
 a:hover{
   color: blue;
+
 }
 
 #loading-icon {
