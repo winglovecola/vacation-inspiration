@@ -33,6 +33,14 @@ let map, marker, infoWindow, userLocation;
 
 
 
+let placeInfo = document.getElementById("place-info")
+let placeTodo = document.getElementById("place-todo")
+let worldWeather = document.getElementById("world-weather")
+placeInfo.classList.remove("place-info");
+placeTodo.classList.remove("place-todo");
+placeInfo.classList.add("none");
+placeTodo.classList.add("none");
+
 
 //initializing google place api
 function initGoogleAutocomplete() {
@@ -104,7 +112,6 @@ function initGoogleAutocomplete() {
 
   input = document.getElementById('search-input');
 
-
   autocomplete = new google.maps.places.Autocomplete(input, options);
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
       
@@ -153,6 +160,12 @@ function initGoogleAutocomplete() {
         //console.log ("searchedLocationData", searchedLocationData);
 
         //save search history
+        placeInfo.classList.add("place-info");
+        placeTodo.classList.add("place-todo");
+        placeInfo.classList.remove("none");
+        placeTodo.classList.remove("none");
+        worldWeather.classList.add("none")
+        
         saveSearch (searchedLocationData);
 
         //execute weather api using "open weather"
@@ -228,6 +241,11 @@ function geocodeSearch(placeName, placeAddress) {
 
   $("#search-input").val(searchTerm);
 
+  placeInfo.classList.add("place-info");
+  placeTodo.classList.add("place-todo");
+  placeInfo.classList.remove("none");
+  placeTodo.classList.remove("none");
+  worldWeather.classList.add("none")
 
   let geocoder = new google.maps.Geocoder();
   geocoder.geocode({"address":searchTerm}, function(results, status) {
