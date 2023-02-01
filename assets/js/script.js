@@ -418,6 +418,26 @@ function strExtract (str, beginningStr, EndingStr) {
 }
 
 
+// travel assistant portion
+function questionfunction(){
+ 
+  let questionInput = $("#search-question").val();
+
+  console.log (questionInput);
+
+  chatGptApi (questionInput , "#chatbox");
+  
+}
+
+
+
+//when user press enter, function above 
+$("#search-question").on("keyup", function(e) {
+  if(e.keyCode == 13) { //press enter
+    questionfunction();
+
+  }
+});
 
 //weather api function
 function vacationCheckInfo (thisSearchedLocationData) {
@@ -425,11 +445,13 @@ function vacationCheckInfo (thisSearchedLocationData) {
 
   //ChatGPT Api
   let askLocation = thisSearchedLocationData.location + ", " + thisSearchedLocationData.countryName;
-  chatGptApi ("describe a vacation to \"" + askLocation + "\"", "#place-info");
   
+  chatGptApi ("describe a vacation to \"" + askLocation + "\"", "#place-info");
+
   
   chatGptApi ("things to do in \"" + askLocation + "\"", "#place-todo");
   
+
 
   //open weather api 
   let openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + thisSearchedLocationData.lat + "&lon=" + thisSearchedLocationData.lng + "&appid=55c6ad05fb90696b0befe8a67cb935d7";
