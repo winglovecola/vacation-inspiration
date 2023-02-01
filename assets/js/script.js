@@ -222,6 +222,26 @@ function strExtract (str, beginningStr, EndingStr) {
 }
 
 
+// travel assistant portion
+function questionfunction(){
+ 
+  let questionInput = $("#search-question").val();
+
+  console.log (questionInput);
+
+  chatGptApi (questionInput , "#chatbox");
+  
+}
+
+
+
+//when user press enter, function above 
+$("#search-question").on("keyup", function(e) {
+  if(e.keyCode == 13) { //press enter
+    questionfunction();
+
+  }
+});
 
 //weather api function
 function vacationCheckInfo (thisSearchedLocationData) {
@@ -229,10 +249,13 @@ function vacationCheckInfo (thisSearchedLocationData) {
 
   //ChatGPT Api
   let askLocation = thisSearchedLocationData.location + ", " + thisSearchedLocationData.countryName;
+  
   chatGptApi ("describe a vacation to \"" + askLocation + "\"", "#place-info");
+ 
   chatGptApi ("things to do in \"" + askLocation + "\"", "#place-todo");
   
 
+ 
 
 
 
