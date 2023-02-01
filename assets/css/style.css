@@ -63,6 +63,13 @@ header {
 }
 
 
+#map {
+
+  border: 1px solid black;
+  height: 500px;
+}
+
+
 .place-info {
 
   display: block;
@@ -149,8 +156,28 @@ header {
   background-color:antiquewhite;
 }
 
+#clear-history-div {
 
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: grey;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: right;
+  
+}
 
+#clear-history-div div {
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+#clear-history-div div:hover {
+
+  text-decoration: underline;
+}
 
 /*search section*/
 #search-input {
