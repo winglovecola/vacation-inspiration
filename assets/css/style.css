@@ -20,7 +20,7 @@ header {
   background-image: url("../images/headerbg.jpg");
   background-position: 25% 55%;
   background-repeat: repeat;
-  background-size: 50%;
+  background-size: 1000px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -64,15 +64,52 @@ header {
 }
 
 
+#map {
+  display: none;
+  border: 1px solid black;
+  height: 500px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+
+#place-photo {
+
+  display: none;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: stretch;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 18px;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.place-photo-div {
+
+  display: flex;
+  align-content: center;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: #000000;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+
 #place-info {
 
-  display: block;
+  display: none;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;
   font-size: 18px;
   margin-bottom: 30px;
 }
+
 #place-info h2 {
 
   font-size: 30px;
@@ -83,7 +120,7 @@ header {
 
 #place-todo {
 
-  display: block;
+  display: none;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;
@@ -150,8 +187,28 @@ header {
   background-color:antiquewhite;
 }
 
+#clear-history-div {
 
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: grey;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: right;
+  
+}
 
+#clear-history-div div {
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+#clear-history-div div:hover {
+
+  text-decoration: underline;
+}
 
 /*search section*/
 #search-input {
@@ -224,7 +281,11 @@ header {
 #world-weather h1 {
 
   display: block;
-  font-size: 35px;
+  font-size: 45px;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  margin-left: -110px;
+
 }
 
 .popular-city-div {
@@ -234,18 +295,20 @@ header {
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  width: 195px;
-  height: 180px;
-  padding: 10px;
+  width: 215px;
+  height: 200px;
   margin: 10px;
   transition: opacity 1s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 .popular-city-div:hover {
 
-  background-color: antiquewhite;
-  cursor: pointer;
+  background-color: #C37500;
+  opacity:0.7 !important;
+  filter:alpha(opacity=70) !important; /* For IE8 and earlier */
+  box-shadow: 0 0 0px #000000 !important;
 }
 
 
@@ -253,6 +316,18 @@ header {
 
   text-align: center;
   
+}
+
+.title {
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.title2{
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .popular-city-div .title {
@@ -385,4 +460,8 @@ footer {
   padding: 20px;
   text-align: center;
   font-size: 20px;
+}
+
+.none {
+  display: none;
 }
