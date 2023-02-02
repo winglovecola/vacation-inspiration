@@ -324,7 +324,7 @@ function renderSearchedLocation () {
     });
     
 
-    $('#weather-search-history').html ("<br><br><br><br>Search History:<br><br>" + weatherSearchHistoryHtml + "<div id='clear-history-div'><div onclick='clearHistory ()'>Clear History</div></div>");
+    $('#weather-search-history').html ("<br><br><br><br>Search History:<br><br>" + weatherSearchHistoryHtml + "<div id='clear-history-div'><div onclick='clearHistory()'>Clear History</div></div>");
 
 
     $( ".weather-history-tab" ).on("click", function() {
@@ -426,22 +426,24 @@ function questionfunction(){
 
   console.log (questionInput);
 
-  let chatIdText= "c" + chatId;
-  let chatIdQuestion= "q" + chatId;
+  let chatIdText = "c" + chatId;
+  let chatIdQuestion = "q" + chatId;
 
   $("#chatbox").append("<div id ='" + chatIdQuestion + "' class = 'aiQuestion'>"
    + "<span id = 'chatboxID' >" + questionInput + "</span>" + "</div>");
 
   //append new div, add id chatHistory, 
+
   $("#chatbox").append("<div class = 'aiAnswer' ><span id ='" + chatIdText + "'></span></div>");
+
 
   
 
-  chatGptApi (questionInput ,  "#" + chatIdText);
+  chatGptApi(questionInput ,  "#" + chatIdText);
 
   $("#chatbox").show();
 
- // $("#aiQuestion").html("<h2>" + questionInput + " ?</h2>")
+ 
 
   chatId++;
 
@@ -612,7 +614,7 @@ function weatherShow (weatherDataRaw) {
       let forcastDate = weatherDate.format ("MMM DD");
 
 
-      let weatherForcastDiv = "<div id='weather-forcast-div'>\
+      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-3 p-1'>\
         <div class='date-div'>" + forcastDate + "</div>\
         <div class='icon-div'>" + weatherIcon + thisWeather.weather[0].description + "</div>\
         <div class='info-div'>\
@@ -637,7 +639,7 @@ function weatherShow (weatherDataRaw) {
         var forcastDate = dayjs((thisWeather.dt + 86400) * 1000).format ("MMM DD");
       }
 
-      let weatherForcastDiv = "<div id='weather-forcast-div'>\
+      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-3 p-1'>\
         <div class='date-div'>" + forcastDate + "</div>\
         <div class='icon-div'>" + weatherIcon + thisWeather.weather[0].description + "</div>\
         <div class='info-div'>\
