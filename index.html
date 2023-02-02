@@ -31,10 +31,18 @@
 
 
       <div id="header-div"><btn id="logo-div">Vacation Inspiration</btn>
-      <div id="header-bar">Travel Assistant: <input id="search-question" type="text" placeholder="Ask questions" /></div>
+      <button id="header-bar" class="openbtn" onclick="openNav()"><span id="travelAssistant">Travel Assistant🎤</span></button>
+      <div id="sideclick" class="sideclick"></div>
+      <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div id="chatbox" ></div>
+          <div id="chatbox2" ></div>
+      </div>
+      </div>
+      <div id="searchbar">
+        <input id="search-question" type="text" placeholder="Ask questions" />
+      </div>
 
-
-    </div>  
     </header>
 
 
@@ -62,9 +70,7 @@
           <section id="place-info" class="place-info"></section>
           <div id = "place-todo" class="place-todo"></div>
           
-          <div id="chatbox" >
-            
-          </div>
+
 
           <section id="place-info"></section>
           <section id="place-photo"></section>
@@ -97,9 +103,6 @@
 
               <div>
 
-                <img src="assets/City Images/cameron-venti-c5GkEd-j5vI-unsplash_noCautionTape-1600x1186.jpg"  class="popular-city-div" onclick="geocodeSearch('Shanghai', 'China')" />
-                <figcaption class="title">Los Angeles</figcaption/>
-
                 <img src="assets/City Images/cameron-venti-c5GkEd-j5vI-unsplash_noCautionTape-1600x1186.jpg"  class="popular-city-div" onclick="geocodeSearch('Los Angeles', 'USA')" />
                 <figcaption class="title">Los Angeles</figcaption />
 
@@ -107,8 +110,6 @@
               </div>
 
               <div>
-
-                <img src="assets/City Images/0c67ff64-cf54-4886-91dd-89aa601463af.jpg"  class="popular-city-div" onclick="geocodeSearch('Shanghai', 'China')" />
 
                 <img src="assets/City Images/0c67ff64-cf54-4886-91dd-89aa601463af.jpg"  class="popular-city-div" onclick="geocodeSearch('Sydney', 'Australia')" />
 
@@ -118,8 +119,6 @@
 
               <div>
 
-                <img src="assets/City Images/tokyo-japan-TOKYOTG0621-52012ff551dc46c4a87ac8e3151307a4.jpg"  class="popular-city-div" onclick="geocodeSearch('Shanghai', 'China')" />
-
                 <img src="assets/City Images/tokyo-japan-TOKYOTG0621-52012ff551dc46c4a87ac8e3151307a4.jpg"  class="popular-city-div" onclick="geocodeSearch('Tokyo', 'Japan')" />
 
                 <figcaption class="title">Tokyo</figcaption />
@@ -128,8 +127,6 @@
 
               <div>
 
-                <img src="assets/City Images/TAL-seoul-city-skyline-south-korea-SEOULRN0123-edcf7ba4a54d4026ab679bca83fab972.jpg"  class="popular-city-div" onclick="geocodeSearch('Shanghai', 'China')" />
-
                 <img src="assets/City Images/TAL-seoul-city-skyline-south-korea-SEOULRN0123-edcf7ba4a54d4026ab679bca83fab972.jpg"  class="popular-city-div" onclick="geocodeSearch('Seoul', 'South Korea')" />
 
                 <figcaption class="title">Seoul</figcaption />
@@ -137,8 +134,6 @@
               </div>
 
               <div>
-
-                <img src="assets/City Images/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg"  class="popular-city-div" onclick="geocodeSearch('Shanghai', 'China')" />
 
                 <img src="assets/City Images/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg"  class="popular-city-div" onclick="geocodeSearch('Paris', 'France')" />
 
