@@ -49,6 +49,7 @@ header {
   border-radius: 10px;
   width: 350px;
   height: 30px;
+  margin-top: 5px;
 }
 
 #logo-div {
@@ -496,4 +497,131 @@ footer {
 
 .none {
   display: none;
+}
+.sideclick{
+  height: 450px; 
+  margin-right: 35px;
+  width: 5px; 
+  position: fixed; 
+  z-index: 1; /* Stay on top */
+  top: 280px;
+  right: 0;
+  background-color: black; 
+  border-radius: 10px;
+
+}
+.sidepanel {
+  height: 450px; 
+  margin-right: 35px;
+  width: 0; 
+  position: fixed; 
+  z-index: 1; /* Stay on top */
+  top: 280px;
+  right: 0;
+  background-color: white; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.5s; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#mySidepanel{
+  border: 1px solid black;
+}
+
+#sideclick:hover {
+  background-color: blue;
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#searchbar {
+  top: 730px;
+  height: 40px;
+  background: darkgrey;
+  position: fixed;
+  right: 35px;
+  width: 375px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+.aiQuestion{
+  text-align: left;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  background-color: dodgerblue;
+  right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-left: 105px;
+  width: 250px;
+}
+#chatboxID{
+text-align: right;
+}
+
+.aiAnswer{
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  background-color: lightgrey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 250px;
+}
+#chatIdText {
+  background-color: lightgrey;
+  right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#travelAssistant {
+  color: black;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 5px;
+  border-radius: 5px;
 }

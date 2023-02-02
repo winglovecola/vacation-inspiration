@@ -430,10 +430,10 @@ function questionfunction(){
   let chatIdQuestion= "q" + chatId;
 
   $("#chatbox").append("<div id ='" + chatIdQuestion + "' class = 'aiQuestion'>"
-   + questionInput +  "</div>");
+   + "<span id = 'chatboxID' >" + questionInput + "</span>" + "</div>");
 
   //append new div, add id chatHistory, 
-  $("#chatbox").append("<div id ='" + chatIdText + " ' class = 'aiAnswer' ></div>");
+  $("#chatbox").append("<div class = 'aiAnswer' ><span id ='" + chatIdText + "'></span></div>");
 
   
 
@@ -819,7 +819,32 @@ el.addEventListener("mousemove", (e) => {
 
 });
 
-
+const searchBar = document.getElementById("searchbar")
 
 //load search location data
 loadSearchedLocationData ();
+const sidePanel = document.getElementById("mySidepanel")
+sidePanel.classList.add("none")
+searchBar.classList.add("none")
+
+function openNav() {
+  sidePanel.classList.remove("none")
+  searchBar.classList.remove("none")
+  document.getElementById("mySidepanel").style.width = "375px";
+  
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  sidePanel.classList.add("none")
+  searchBar.classList.add("none")
+  document.getElementById("mySidepanel").style.width = "0px";
+}
+
+const sideClick = document.getElementById("sideclick")
+sideClick.addEventListener("mouseover", function(event) {
+  if (document.getElementById("mySidepanel").style.width == "0px") {
+    openNav();
+  } else if (document.getElementById("mySidepanel").style.width == "375px") {
+    closeNav();
+  }})
