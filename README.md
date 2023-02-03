@@ -11,7 +11,7 @@ https://winglovecola.github.io/vacation-inspiration
 
 ## Preview
 
-![Website screenshot 1](https://github.com/winglovecola/vacation-inspiration/blob/main/assets/images/screenshot.jpg?raw=true)
+![Website screenshot 1](https://github.com/winglovecola/vacation-inspiration/blob/main/assets/images/screenshot1.jpg?raw=true)
 
 ![Website screenshot 2](https://github.com/winglovecola/vacation-inspiration/blob/main/assets/images/screenshot2.jpg?raw=true)
 ## Credit
