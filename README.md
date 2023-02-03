@@ -2,7 +2,7 @@
 
 ## Description
 
-Vacation Inspiration is an advance AI travel assistant to help you plan your trip. Finding the right spot to travel to is one of the hardest things to do. But if there was an easy way to see a place and find out what there is do there, it would be a peach of mind while planning our vacation.
+Vacation Inspiration is an advance AI travel assistant to help you plan your trip. Finding the right spot to travel to is one of the hardest things to do. But if we can tell you what are the fun activities and places you should visit, it would be a peach of mind while planning your vacation.
 
 
 ## Live Site
