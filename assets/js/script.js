@@ -781,8 +781,8 @@ function chatGptApi(search, elementID) {
  
 
   let chatGptApiUrl = "https://api.openai.com/v1/completions";
-  //let chatGptApiKey = "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";
-  let chatGptApiKey = "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";
+  //let chatGptApiKey = "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";
+  let chatGptApiKey = "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";
 
   
   
