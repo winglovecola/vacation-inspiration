@@ -781,8 +781,7 @@ function chatGptApi(search, elementID) {
  
 
   let chatGptApiUrl = "https://api.openai.com/v1/completions";
-  let chatGptApiKey = "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";
-  //let chatGptApiKey = "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";
+  let chatGptApiKey = "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";
 
   
   
