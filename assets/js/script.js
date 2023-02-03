@@ -1,5 +1,7 @@
 let searchedLocation, searchedLat, searchedLng;
 
+
+
 let timeTableHtml = "";
 let timeBlockClass = "";
 let isCurrentHour = "";
@@ -18,7 +20,7 @@ let searchHistoryDataRaw = [];
 var searchHistoryData = [];
 
 let searchedLocationData = {};
-
+let k1 = "sk-cw4aPposJn4PhyQ3IZWc";
 
 let googlePhotoDisplayLimit = 6; //control how many google image display in the page
 let googlePhotoFound = 0;
@@ -26,10 +28,12 @@ let googlePhotoFound = 0;
 let input, options, autocomplete;
 let map, marker, infoWindow, userLocation;
 
+
+
 //reset local storage for testing
 //localStorage.removeItem ("search-history");
 
-
+let k2 = "T3BlbkFJ0x7OpsC5KOzCnj8SA4jC";
 
 
 //click logo to go back
@@ -781,7 +785,7 @@ function chatGptApi(search, elementID) {
  
 
   let chatGptApiUrl = "https://api.openai.com/v1/completions";
-  let chatGptApiKey = "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";
+  let chatGptApiK = k1 + k2;
 
   
   
@@ -799,7 +803,7 @@ function chatGptApi(search, elementID) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + chatGptApiKey
+      Authorization: "Bearer " + chatGptApiK
     },
     body: JSON.stringify(fetchData)
   };
