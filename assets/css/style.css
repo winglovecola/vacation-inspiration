@@ -18,7 +18,7 @@ header {
   display:block;
   position: relative;
   width: 100%;
-  height: 270px;
+  height: 230px;
   background-color: black;
   background-image: url("../images/headerbg.jpg");
   background-position: 25% 55%;
@@ -43,14 +43,7 @@ header {
   border-bottom-right-radius: 20px;
 }
 
-#search-question {
 
-  padding: 5px;
-  border-radius: 10px;
-  width: 350px;
-  height: 30px;
-  margin-top: 5px;
-}
 
 #logo-div {
   display:block;
@@ -78,6 +71,13 @@ header {
 }
 
 
+
+.container {
+  display: block;
+  max-width: 1200px;
+  margin: auto;
+}
+
 #place-photo {
 
   display: none;
@@ -91,7 +91,6 @@ header {
   margin-bottom: 30px;
   margin-top: 20px;
   gap: 10px;
-
   border: 1px solid #000000;
   box-shadow: rgb(0 0 0 / 25%) 0px 14px 28px, rgb(0 0 0 / 22%) 0px 10px 10px;
 
@@ -150,16 +149,7 @@ header {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-#chatbox {
 
-  display: none;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
-  padding: 20px;
-  font-size: 20px;
-  margin-bottom: 30px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-}
 
 #place-todo h2 {
   margin-bottom: 15px;
@@ -194,6 +184,11 @@ a:hover{
   
 }
 
+#loading-div {
+  font-family: 'Cardo', serif;
+  font-size: 25px;
+}
+
 .weather-icon {
   width: 80px;
 }
@@ -219,22 +214,24 @@ a:hover{
 
 
 /*weather history section*/
-.weather-history-tab {
+.history-tab {
 
   display: block;
   width: 100%;
   max-width: 350px;
   font-size:  16px;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  border: 1px solid rgb(145, 145, 145);
+  border-radius: 25px;
   cursor: pointer;
+  color:rgb(141, 141, 141);
 }
 
-.weather-history-tab:hover {
+.history-tab:hover {
 
   background-color:antiquewhite;
+  color:rgb(0, 0, 0);
 }
 
 #clear-history-div {
@@ -267,8 +264,9 @@ a:hover{
   max-width: 350px;
   height: 50px;
   font-size:  20px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
+  border: 2px solid rgb(49, 49, 49);
 }
 
 
@@ -278,18 +276,35 @@ a:hover{
 
   display: block;
   padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 30px;
-  
+  min-width: 400px;
 }
 
 
 #search-div {
   display: block;
+  min-width: 350px;
   min-height: 620px;
   border: 1px solid black;
   border-radius: 10px;
   padding: 20px;
+  margin: auto;
 }
+
+#search-div h2 {
+  color:rgb(77, 53, 214);
+}
+
+
+
+
+#search-history {
+
+  margin-top: 40px;
+}
+
 
 
 /*loading section*/
@@ -316,25 +331,36 @@ a:hover{
   padding-left: 25px;
   padding-right: 25px;
   min-height: 600px;
+  min-width: 460px;
 }
 
-#world-weather-flex {
+
+#popular-city {
+
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+
+#popular-city-flex {
 
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
+  justify-content: center;
+
 }
 
 
 /*popular cities section*/
 
-#world-weather h1 {
+#popular-city h1 {
 
   display: block;
   font-size: 45px;
   font-family: 'Bebas Neue', cursive;
   text-align: center;
-  margin-left: -110px;
 
 }
 
@@ -350,6 +376,7 @@ a:hover{
   margin: 10px;
   transition: opacity 1s ease-out;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
 }
 
 
@@ -448,8 +475,9 @@ a:hover{
 #weather-forcast-sec {
  
   display: none;
+  flex-flow: wrap;
+  flex-direction: row;
   margin-bottom: 50px;
-  display:flex;
   width: 100%;
   
 }
@@ -457,6 +485,7 @@ a:hover{
 #weather-forcast-div {
  
   display: block;
+  min-width: 200px;
   border: 1px solid rgb(130, 130, 130);
   border-radius: 10px;
   padding: 10px;
@@ -509,126 +538,178 @@ a:hover{
   margin-bottom: 20px;
 }
 
-
-/* footer section */
-footer {
-  display: block;
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  font-size: 20px;
-}
-
 .none {
   display: none;
 }
 
 
-.sideclick{
-  height: 450px; 
-  margin-right: 35px;
-  width: 5px; 
-  position: fixed; 
-  z-index: 1; /* Stay on top */
-  top: 280px;
-  right: 0;
-  background-color: black; 
-  border-radius: 10px;
 
+
+/* ai assistant chatbox */
+
+/* scroll bar*/
+.custom-scroll::-webkit-scrollbar {
+  width: 5px;
 }
-.sidepanel {
-  height: 450px; 
-  margin-right: 35px;
-  width: 0; 
+
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #c4c4c4; 
+}
+
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+#ai-div {
+
+  display: block;
   position: fixed; 
-  z-index: 1; /* Stay on top */
-  top: 280px;
+  top: 245px;
   right: 0;
+  width: 0; 
+  height: 500px; 
+  margin-right: 35px;
+  background-color: white;
+  transition: 0.5s; 
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1; /* Stay on top */
+}
+
+#ai-div a {
+
+  right: 25px;
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  transition: 0.3s;
+}
+
+#ai-div a:hover {
+  color: red;
+}
+
+#ai-div .closebtn {
+  display: block;
+  position: absolute;
+  top: 0px;
+  font-size: 36px;
+  text-align: right;
+}
+
+
+
+
+.sidepanel {
+  display: flex;
+  flex-direction: column-reverse;
+  top: 275px;
+  right: 0;
+  width: 100%; 
+  height: 500px; 
+  margin-right: 35px;
   background-color: white; 
   overflow-x: hidden; 
   padding-top: 60px; 
   transition: 0.5s; 
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  display: flex;
-  flex-direction: column-reverse;
+  border-radius: 10px;
 }
 
 #mySidepanel{
   border: 1px solid black;
 }
 
+.sideclick{
+  display:none;
+  width: 5px; 
+  height: 450px; 
+  margin-right: 35px;
+  position: fixed; 
+  top: 280px;
+  right: 0;
+  background-color: rgb(120, 120, 120); 
+  border-radius: 50%;
+  z-index: 1; /* Stay on top */
+}
+
 #sideclick:hover {
   background-color: blue;
 }
 
-.sidepanel a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+
+
+#search-question {
+  padding: 5px;
+  border: 1px solid rgb(70, 70, 70);
+  border-radius: 15px;
+  width: 350px;
+  height: 50px;
+  margin-top: 5px;
 }
 
-.sidepanel a:hover {
-  color: #f1f1f1;
-}
 
-.sidepanel .closebtn {
+#ai-searchbar {
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-#searchbar {
-  top: 730px;
-  height: 40px;
-  background: darkgrey;
-  position: fixed;
-  right: 35px;
+  background: rgb(206, 206, 206);
+  bottom:0px;
   width: 375px;
+  height: 60px;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
+
 }
 
-.aiQuestion{
+.ai-question{
   text-align: left;
   margin-right: 5px;
   margin-bottom: 10px;
-  background-color: dodgerblue;
+  background-color: rgb(100, 175, 251);
   right: 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
   margin-left: 105px;
+  min-width: 250px;
+}
+
+.ai-answer{
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  background-color: rgb(228, 228, 228);
+  padding-top: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   width: 250px;
 }
+
+
+#chatbox {
+
+  display: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 60px;
+}
+
 #chatboxID{
 text-align: right;
 }
 
-.aiAnswer{
-  text-align: left;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  background-color: lightgrey;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  width: 250px;
-}
+
 #chatIdText {
   background-color: lightgrey;
   right: 0px;
@@ -642,13 +723,72 @@ text-align: right;
   margin-bottom: 10px;
 }
 
-#travelAssistant {
+#travel-assistant {
+
+  display: block;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 30px;
+  top: -30px;
+  right: 20px;
+  width: 270px;
   color: black;
   background-color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 8px;
-  padding-right: 5px;
-  border-radius: 5px;
+  padding: 15px;
+  text-align: left;
 }
 
+#travel-assistant:hover {
+
+  background-color: rgb(240, 224, 255);
+}
+
+#ai-mic-icon {
+
+  display:inline-block;
+  position: absolute;
+  top: 1px;
+  right: 3px;
+}
+
+/* footer section */
+footer {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  
+  #search-sec {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  #search-div {
+    min-height: 220px;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  #search-history {
+    min-height: 220px;
+    height: 220px;
+    overflow: scroll;
+    margin-top: 30px;
+  }
+
+
+  #forcast-sec {
+
+    padding: 5px;
+    margin: 5px;
+  }
+}
