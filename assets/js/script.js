@@ -20,23 +20,25 @@ var searchHistoryData = [];
 let searchedLocationData = {};
 
 
+let googlePhotoDisplayLimit = 6; //control how many google image display in the page
+let googlePhotoFound = 0;
 
+let input, options, autocomplete;
+let map, marker, infoWindow, userLocation;
 
 //reset local storage for testing
 //localStorage.removeItem ("search-history");
 
 
-let googlePhotoDisplayLimit = 6; //control how many google image display in the page
-
-let input, options, autocomplete;
-let map, marker, infoWindow, userLocation;
 
 
-const worldWeather = document.getElementById("world-weather")
+//click logo to go back
+const popularCity = document.getElementById("popular-city")
 const logo = document.getElementById("logo-div")
 logo.addEventListener("click", function(event) {
   window.location.reload();
 })
+
 
 //initializing google place api
 function initGoogleAutocomplete() {
@@ -114,13 +116,19 @@ function initGoogleAutocomplete() {
 
 
       // If the place has a geometry, then present it on a map.
-      if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-      } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);
+      
+ 
+      if (place.geometry)
+      {
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(17);
+        }
       }
-
+      else
+        return;
 
       marker.setVisible(false);
       
@@ -149,7 +157,7 @@ function initGoogleAutocomplete() {
         searchedLocationData.placeId = place.place_id;
 
         googlePhotoApi (place, googlePhotoDisplayLimit, "#place-photo");
-        worldWeather.classList.add("none")
+        popularCity.classList.add("none")
 
 
 
@@ -179,9 +187,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function googlePhotoApi (place, imageLimit, elementID) {
 
+
+  googlePhotoFound = 0;
+
+
   if (place)
   {
+  
     if (!place.photos) {
+      $("#place-photo").hide ();
       return;
     }
 
@@ -192,14 +206,29 @@ function googlePhotoApi (place, imageLimit, elementID) {
     if (photos.length < imageLimit)
       imageLimit = photos.length;
 
-    for (let i = 0; i < imageLimit; i++)
+
+      
+    if (imageLimit > 0)
     {
-      photoUrl = photos[i].getUrl({maxWidth: 240, maxHeight: 240});
-      placePhotoHtml += "<div class='place-photo-div'><img src='" + photoUrl + "'></div>";
+      for (let i = 0; i < imageLimit; i++)
+      {
+        photoUrl = photos[i].getUrl({maxWidth: 240, maxHeight: 240});
+        placePhotoHtml += "<div class='place-photo-div'><img src='" + photoUrl + "'></div>";
+      }
+
+      googlePhotoFound = imageLimit;
+      
+    }
+    else
+    {
+      $("#place-photo").hide ();
     }
     
-    
     $(elementID).html (placePhotoHtml);
+  }
+  else
+  {
+    $("#place-photo").hide ();
   }
 }
 
@@ -221,8 +250,13 @@ function geocodeSearch(placeName, placeAddress) {
   {
     let $firstResult = $('.pac-item:first').children();
     
-    placeName = $firstResult[1].textContent;
-    placeAddress = $firstResult[2].textContent;
+    if ($firstResult)
+    {
+      placeName = $firstResult[1].textContent;
+      placeAddress = $firstResult[2].textContent;
+    }
+    else
+      return;
   }
 
 
@@ -230,13 +264,13 @@ function geocodeSearch(placeName, placeAddress) {
 
 
   $("#search-input").val(searchTerm);
-  worldWeather.classList.add("none")
+  popularCity.classList.add("none")
 
   let geocoder = new google.maps.Geocoder();
   geocoder.geocode({"address":searchTerm}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) 
       {
-        console.log ("Geocoder", results);
+        //console.log ("Geocoder", results);
         
         place = results[0];
           
@@ -318,16 +352,16 @@ function renderSearchedLocation () {
 
       let sdata = thisWeatherData.location + " " + thisWeatherData.region + ", " +  thisWeatherData.countryName;
 
-      weatherSearchHistoryHtml += "<div class='weather-history-tab' sdata-id='" + sdataId + "' location='" + thisWeatherData.location + "' region='" + thisWeatherData.region + "' countryName='" + thisWeatherData.countryName + "' lat='" + thisWeatherData.lat + "' lng='" + thisWeatherData.lng + "' sdata='" + sdata + "'><b>" + thisWeatherData.location + "</b> " + thisWeatherData.region + ", " +  thisWeatherData.countryName + " </div>";
+      weatherSearchHistoryHtml += "<div class='history-tab' sdata-id='" + sdataId + "' location='" + thisWeatherData.location + "' region='" + thisWeatherData.region + "' countryName='" + thisWeatherData.countryName + "' lat='" + thisWeatherData.lat + "' lng='" + thisWeatherData.lng + "' sdata='" + sdata + "'><b>" + thisWeatherData.location + "</b> " + thisWeatherData.region + ", " +  thisWeatherData.countryName + " </div>";
     
       sdataId++;
     });
     
 
-    $('#weather-search-history').html ("<br><br><br><br>Search History:<br><br>" + weatherSearchHistoryHtml + "<div id='clear-history-div'><div onclick='clearHistory()'>Clear History</div></div>");
+    $('#search-history').html ("Search History:<br><br>" + weatherSearchHistoryHtml + "<div id='clear-history-div'><div onclick='clearHistory()'>Clear History</div></div>");
 
 
-    $( ".weather-history-tab" ).on("click", function() {
+    $( ".history-tab" ).on("click", function() {
       
       //set search bar text
       document.getElementById('search-input').value = $(this).attr ("sdata");
@@ -350,7 +384,7 @@ function renderSearchedLocation () {
           fields: ['name', 'photos', 'geometry']
         },
         (place) => {
-          console.log (place);
+          //console.log (place);
 
           // If the place has a geometry, then present it on a map.
           if (place.geometry.viewport) {
@@ -424,20 +458,36 @@ function questionfunction(){
  
   let questionInput = $("#search-question").val();
 
-  console.log (questionInput);
+  //console.log (questionInput);
+
+  if (!questionInput)
+  {
+    if (questionInput.trim () == "")
+      return;
+  }
+
+  if (questionInput)
+  {
+    //console.log ('"' + questionInput.trim () + '"')
+    
+    if (questionInput.trim () == "")
+      return;
+
+  }
+
+
+
 
   let chatIdText = "c" + chatId;
   let chatIdQuestion = "q" + chatId;
 
-  $("#chatbox").append("<div id ='" + chatIdQuestion + "' class = 'aiQuestion'>"
+  $("#chatbox").append("<div id ='" + chatIdQuestion + "' class = 'ai-question'>"
    + "<span id = 'chatboxID' >" + questionInput + "</span>" + "</div>");
 
   //append new div, add id chatHistory, 
 
-  $("#chatbox").append("<div class = 'aiAnswer' ><span id ='" + chatIdText + "'></span></div>");
+  $("#chatbox").append("<div class = 'ai-answer' ><span id ='" + chatIdText + "'></span></div>");
 
-
-  
 
   chatGptApi(questionInput ,  "#" + chatIdText);
 
@@ -470,7 +520,7 @@ function vacationCheckInfo (thisSearchedLocationData) {
 
 
   //ChatGPT Api
-  let askLocation = thisSearchedLocationData.location + ", " + thisSearchedLocationData.countryName;
+  let askLocation = thisSearchedLocationData.location + " " +  thisSearchedLocationData.region + ", " + thisSearchedLocationData.countryName;
   
   chatGptApi ("describe a vacation to \"" + askLocation + "\"", "#place-info");
 
@@ -512,12 +562,16 @@ function weatherShow (weatherDataRaw) {
   $("#loading").hide ();
   
   $("#weather-now-sec").show ();
-  $("#weather-forcast-sec").show ();
+  $("#weather-forcast-sec").css ("display", "flex");
 
   $("#map").show ();
   $("#place-info").show ();
   $("#place-todo").show ();
-  $("#place-photo").css ("display", "flex");
+
+  if (googlePhotoFound > 0)
+    $("#place-photo").css ("display", "flex");
+
+  closeNav ();
 
 
   weatherNowHtml = "";
@@ -542,6 +596,8 @@ function weatherShow (weatherDataRaw) {
 
     let dateDiff = weatherDate.diff(todayDate, "d")
 
+
+  
     if (dateDiffBegin === null)
       dateDiffBegin = dateDiff;
 
@@ -563,7 +619,6 @@ function weatherShow (weatherDataRaw) {
     }
     else if (dateDiff <= 3 + dateDiffBegin)
     {
-      
       if (weatherDateHour != "10AM")
         return;
 
@@ -576,8 +631,10 @@ function weatherShow (weatherDataRaw) {
         if (weatherDateHour != "10AM" && weatherDateHour != "10PM" )
           return;
       }
+      else
+        return;
     }
-
+    
     
     let today = dayjs ().format ("MMM DD YYYY");
     
@@ -614,7 +671,7 @@ function weatherShow (weatherDataRaw) {
       let forcastDate = weatherDate.format ("MMM DD");
 
 
-      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-3 p-1'>\
+      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-4 p-1'>\
         <div class='date-div'>" + forcastDate + "</div>\
         <div class='icon-div'>" + weatherIcon + thisWeather.weather[0].description + "</div>\
         <div class='info-div'>\
@@ -639,7 +696,7 @@ function weatherShow (weatherDataRaw) {
         var forcastDate = dayjs((thisWeather.dt + 86400) * 1000).format ("MMM DD");
       }
 
-      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-3 p-1'>\
+      let weatherForcastDiv = "<div id='weather-forcast-div' class='col-4 p-1'>\
         <div class='date-div'>" + forcastDate + "</div>\
         <div class='icon-div'>" + weatherIcon + thisWeather.weather[0].description + "</div>\
         <div class='info-div'>\
@@ -712,7 +769,7 @@ function clearHistory () {
 
   localStorage.removeItem ("search-history");
   searchHistoryData = [];
-  $('#weather-search-history').html ("");
+  $('#search-history').html ("");
   
 }
 
@@ -789,9 +846,13 @@ function chatGptApi(search, elementID) {
           if (todoArray[key])
           {
             //remove the 1. 2. 3. in the beginning of the text
+            
             tempText = todoArray[key].replace(/[0-9]+\./, '');
             
-            printHtml += "<li><a href='https://www.google.com/search?q=" + encodeURIComponent(tempText) + "&tbm=isch' target='_blank'>" + tempText + "</a></li>";
+            let askLocation = searchedLocationData.location + " " +  searchedLocationData.region + ", " + searchedLocationData.countryName;
+            let searchQuery = askLocation + ": " + tempText;
+
+            printHtml += "<li><a href='https://www.google.com/search?q=" + encodeURIComponent(searchQuery) + "&tbm=isch' target='_blank'>" + tempText + "</a></li>";
           }
         });
 
@@ -807,7 +868,11 @@ function chatGptApi(search, elementID) {
         $(elementID).html (printHtml);
       }
       else
-        $(elementID).html (data.choices[0].text);
+      {
+        //console.log (data.choices[0].text);
+        textTrimed = data.choices[0].text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        $(elementID).html (textTrimed);
+      }
     }
   });
 }
@@ -816,37 +881,37 @@ function chatGptApi(search, elementID) {
 const el = document.querySelector("#header-div");
 
 el.addEventListener("mousemove", (e) => {
-  if (e.target.id != "search-question")
+  if (e.target.id != "travel-assistant")
     el.style.backgroundPositionX = (-e.offsetX * 0.20) + "px";
 
 });
 
-const searchBar = document.getElementById("searchbar")
+const searchBar = document.getElementById("ai-searchbar")
 
 //load search location data
 loadSearchedLocationData ();
-const sidePanel = document.getElementById("mySidepanel")
+const sidePanel = document.getElementById("ai-div")
 sidePanel.classList.add("none")
 searchBar.classList.add("none")
 
 function openNav() {
   sidePanel.classList.remove("none")
   searchBar.classList.remove("none")
-  document.getElementById("mySidepanel").style.width = "375px";
-  
+  document.getElementById("ai-div").style.width = "375px";
+  $('#sideclick').show ();
 }
 
 /* Set the width of the sidebar to 0 (hide it) */
 function closeNav() {
   sidePanel.classList.add("none")
   searchBar.classList.add("none")
-  document.getElementById("mySidepanel").style.width = "0px";
+  document.getElementById("ai-div").style.width = "0px";
 }
 
 const sideClick = document.getElementById("sideclick")
 sideClick.addEventListener("mouseover", function(event) {
-  if (document.getElementById("mySidepanel").style.width == "0px") {
+  if (document.getElementById("ai-div").style.width == "0px") {
     openNav();
-  } else if (document.getElementById("mySidepanel").style.width == "375px") {
+  } else if (document.getElementById("ai-div").style.width == "375px") {
     closeNav();
   }})
