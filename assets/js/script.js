@@ -781,7 +781,10 @@ function chatGptApi(search, elementID) {
  
 
   let chatGptApiUrl = "https://api.openai.com/v1/completions";
-  let chatGptApiKey = "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";
+  //let chatGptApiKey = "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";
+  let chatGptApiKey = "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";
+
+  
   
   let fetchData = {
     model: "text-davinci-003",
