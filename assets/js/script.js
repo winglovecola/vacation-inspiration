@@ -784,14 +784,17 @@ function clearHistory () {
 function chatGptApi(search, elementID) {
  
 
-  let chatGptApiUrl = "https://api.openai.com/v1/completions";
+  let chatGptApiUrl = "https://api.openai.com/v1/chat/completions";
   let chatGptApiK = k1 + k2;
 
   
   
   let fetchData = {
-    model: "text-davinci-003",
-    prompt: search,
+    model: "gpt-3.5-turbo",
+    messages: [{
+      "role": "user",
+      "content": search
+    }],
     temperature: 0.7,
     max_tokens: 256,
     top_p: 1,
@@ -839,7 +842,9 @@ function chatGptApi(search, elementID) {
       if (elementID == "#place-todo")
       {
     
-        let todoRawText = data.choices[0].text;
+        console.log (data)
+
+        let todoRawText = data.choices[0].message.content;
         todoRawText = todoRawText.trim ();
 
         let todoArray = todoRawText.split ("\n");
@@ -870,13 +875,13 @@ function chatGptApi(search, elementID) {
       }
       else if (elementID == "#place-info")
       {
-        printHtml = "<h2>" + searchedLocation + "</h2>" + data.choices[0].text;
+        printHtml = "<h2>" + searchedLocation + "</h2>" + data.choices[0].message.content;
         $(elementID).html (printHtml);
       }
       else
       {
         //console.log (data.choices[0].text);
-        textTrimed = data.choices[0].text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        textTrimed = data.choices[0].message.content.replace(/(?:\r\n|\r|\n)/g, '<br>');
         $(elementID).html (textTrimed);
       }
     }
