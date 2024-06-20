@@ -20,7 +20,7 @@ let searchHistoryDataRaw = [];
 var searchHistoryData = [];
 
 let searchedLocationData = {};
-let k1 = "sk-cw4aPposJn4PhyQ3IZWc";
+let k1 = "sk-GAV0cTqcgtcwzkRavUWMT3";
 
 let googlePhotoDisplayLimit = 6; //control how many google image display in the page
 let googlePhotoFound = 0;
@@ -33,7 +33,7 @@ let map, marker, infoWindow, userLocation;
 //reset local storage for testing
 //localStorage.removeItem ("search-history");
 
-let k2 = "T3BlbkFJ0x7OpsC5KOzCnj8SA4jC";
+let k2 = "BlbkFJ1zG4IOFdrqmQ7cecMMzj";
 
 
 //click logo to go back
@@ -790,7 +790,7 @@ function chatGptApi(search, elementID) {
   
   
   let fetchData = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
     messages: [{
       "role": "user",
       "content": search
@@ -810,6 +810,7 @@ function chatGptApi(search, elementID) {
     },
     body: JSON.stringify(fetchData)
   };
+
 
 
   let loadText = "";
