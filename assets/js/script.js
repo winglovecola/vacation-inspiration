@@ -20,7 +20,7 @@ let searchHistoryDataRaw = [];
 var searchHistoryData = [];
 
 let searchedLocationData = {};
-let k1 = "sk-GAV0cTqcgtcwzkRavUWMT3";
+let k1 = "sk-proj-9ckQsA16lVWJwQcNLBuIxtT3Eo_E5zvn7385ppmxZcKGbaB0DnaD";
 
 let googlePhotoDisplayLimit = 6; //control how many google image display in the page
 let googlePhotoFound = 0;
@@ -33,7 +33,7 @@ let map, marker, infoWindow, userLocation;
 //reset local storage for testing
 //localStorage.removeItem ("search-history");
 
-let k2 = "BlbkFJ1zG4IOFdrqmQ7cecMMzj";
+let k2 = "I5gZA1T3BlbkFJc0jrB5p9ZXuXE4TE4xDd_Q0tcURmIBFa2VMbu4zWrQWCjZhA-CkwzvC10A";
 
 
 //click logo to go back
@@ -790,13 +790,13 @@ function chatGptApi(search, elementID) {
   
   
   let fetchData = {
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     messages: [{
       "role": "user",
       "content": search
     }],
     temperature: 0.7,
-    max_tokens: 256,
+    max_tokens: 1000,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0
@@ -846,37 +846,16 @@ function chatGptApi(search, elementID) {
         console.log (data)
 
         let todoRawText = data.choices[0].message.content;
-        todoRawText = todoRawText.trim ();
-
-        let todoArray = todoRawText.split ("\n");
-
-        
-
-        let tempText = "";
-        Object.keys(todoArray).forEach (function (key) {
-    
-          if (todoArray[key])
-          {
-            //remove the 1. 2. 3. in the beginning of the text
-            
-            tempText = todoArray[key].replace(/[0-9]+\./, '');
-            
-            let askLocation = searchedLocationData.location + " " +  searchedLocationData.region + ", " + searchedLocationData.countryName;
-            let searchQuery = askLocation + ": " + tempText;
-
-            printHtml += "<li><a href='https://www.google.com/search?q=" + encodeURIComponent(searchQuery) + "&tbm=isch' target='_blank'>" + tempText + "</a></li>";
-          }
-        });
 
 
-        printHtml = "<h2>To Do List:</h2><ol>" + printHtml + "</ol>";
+        printHtml = "<h2>To Do List:</h2><pre>" + todoRawText + "</pre>";
 
 
         $(elementID).html (printHtml);
       }
       else if (elementID == "#place-info")
       {
-        printHtml = "<h2>" + searchedLocation + "</h2>" + data.choices[0].message.content;
+        printHtml = "<h2>" + searchedLocation + "</h2><pre>" + data.choices[0].message.content + "</pre>";
         $(elementID).html (printHtml);
       }
       else

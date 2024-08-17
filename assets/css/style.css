@@ -137,6 +137,10 @@ header {
 }
 
 
+pre {
+  white-space: pre-wrap;
+}
+
 #place-todo {
 
   display: none;
