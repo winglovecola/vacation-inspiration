@@ -20,7 +20,7 @@ let searchHistoryDataRaw = [];
 var searchHistoryData = [];
 
 let searchedLocationData = {};
-let k1 = "sk-proj-9ckQsA16lVWJwQcNLBuIxtT3Eo_E5zvn7385ppmxZcKGbaB0DnaD";
+let k1 = "sk-proj-1r4bqaLJASEWNSoGeS-9I1iNyB7JbKu5wTmSlBOJoXcsEssYQO0mz0DnJom7l6WF";
 
 let googlePhotoDisplayLimit = 6; //control how many google image display in the page
 let googlePhotoFound = 0;
@@ -33,7 +33,7 @@ let map, marker, infoWindow, userLocation;
 //reset local storage for testing
 //localStorage.removeItem ("search-history");
 
-let k2 = "I5gZA1T3BlbkFJc0jrB5p9ZXuXE4TE4xDd_Q0tcURmIBFa2VMbu4zWrQWCjZhA-CkwzvC10A";
+let k2 = "gRXHZbG5mVT3BlbkFJALwHOlnxZj4MQHbgJ7B4rVIOG6PessJQ8OId8g9B9G478jZ6ge2V-GG_YgZ-snZCKURJCjVSUA";
 
 
 //click logo to go back
